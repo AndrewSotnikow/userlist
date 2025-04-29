@@ -18,12 +18,12 @@ export interface Company {
 }
 
 export interface User {
-    id: number
+    id: string
     name: string
     username: string
     email: string
-    address: Address
+    address: Address | null
     phone: string
     website: string
-    company: Company
+    company: Company | null
 }

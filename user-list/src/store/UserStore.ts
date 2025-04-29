@@ -1,6 +1,7 @@
 // src/stores/UserStore.js
 import { makeAutoObservable } from 'mobx'
 import { User } from '../types/user'
+import { v4 as uuidv4 } from 'uuid'
 
 class UserStore {
     localUsers: User[] = []
@@ -11,8 +12,8 @@ class UserStore {
         makeAutoObservable(this)
     }
 
-    addUser(user: User) {
-        this.localUsers.push({ ...user, id: Date.now() })
+    addUser(user: Partial<User>) {
+        this.localUsers.push({ ...user, id: uuidv4() } as User)
     }
 
     toggleFavorite(userId: User['id']) {
